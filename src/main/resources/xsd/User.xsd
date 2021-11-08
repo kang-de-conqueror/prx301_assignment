@@ -25,10 +25,9 @@
     </xs:restriction>
 </xs:simpleType>
 
-<xs:attribute name="UserId" type="IdType"/>
+<xs:element name="UserId" type="IdType"/>
 <xs:element name="Username" type="stringType"/>
 <xs:element name="Password" type="stringType"/>
-<xs:element name="Name" type="stringType"/>
 <xs:element name="Gender" type="Gender"/>
 <xs:element name="Age" type="intType"/>
 <xs:element name="NumberPhone" type="intType"/>
@@ -39,16 +38,15 @@
     <xs:element name="User">
         <xs:complexType>
             <xs:sequence>
+                <xs:element ref="UserId"/>
                 <xs:element ref="Username"/>
                 <xs:element ref="Password"/>
-                <xs:element ref="Name"/>
                 <xs:element ref="Gender"/>
                 <xs:element ref="Age"/>
                 <xs:element ref="NumberPhone"/>
                 <xs:element ref="Address"/>
                 <xs:element ref="Role"/>
             </xs:sequence>
-            <xs:attribute ref="UserId" use="required" />
         </xs:complexType>
     </xs:element>
 

@@ -9,37 +9,38 @@
 </xs:simpleType>
 <xs:simpleType name="IdType">
     <xs:restriction base="xs:ID">
-        <xs:pattern value="P[0-9]{3}"/>
+        <xs:pattern value="P[0-9]{2}"/>
     </xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Brand">
     <xs:restriction base="xs:string">
-        <xs:enumeration value="Vin"/>
+        <xs:enumeration value="Vinfast"/>
         <xs:enumeration value="Mercedes"/>
         <xs:enumeration value="Toyota"/>
         <xs:enumeration value="Huyndai"/>
+        <xs:enumeration value="Mitsubishi"/>
     </xs:restriction>
 </xs:simpleType>
 
-<xs:attribute name="ProductId" type="IdType"/>
-<xs:element name="Productname" type="stringType"/>
+<xs:element name="ProductId" type="IdType"/>
+<xs:element name="ProductName" type="stringType"/>
 <xs:element name="Brand" type="Brand"/>
 <xs:element name="Price" type="intType"/>
 <xs:element name="Color" type="stringType"/>
-<xs:element name="TypeProduct" type="stringType"/>
 <xs:element name="Quantity" type="intType"/>
+<xs:element name="imgURL" type="stringType"/>
 
 <xs:element name="Product">
     <xs:complexType>
         <xs:sequence>
-            <xs:element ref="Productname"/>
+            <xs:element ref="ProductId" />
+            <xs:element ref="ProductName"/>
             <xs:element ref="Brand"/>
             <xs:element ref="Price"/>
             <xs:element ref="Color"/>
-            <xs:element ref="TypeProduct"/>
             <xs:element ref="Quantity"/>
+            <xs:element ref="imgURL" />
         </xs:sequence>
-        <xs:attribute ref="ProductId" use="required" />
     </xs:complexType>
 </xs:element>
 

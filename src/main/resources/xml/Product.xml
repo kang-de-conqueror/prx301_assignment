@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Products xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Product.xsd">
-    <Product ProductId="P123">
-        <Productname>djdd</Productname>
-        <Brand>Mercedes</Brand>
+    <Product>
+        <ProductId>P01</ProductId>
+        <ProductName>Vinfast Lux A</ProductName>
+        <Brand>Vinfast</Brand>
         <Price>1000</Price>
-        <Color>Xanh</Color>
-        <TypeProduct>222</TypeProduct>
-        <Quantity>222</Quantity>
+        <Color>Trắng Ngọc Trinh</Color>
+        <Quantity>22</Quantity>
+        <imgURL>google.com/img.jpg</imgURL>
     </Product>
 
-    <Product ProductId="P125">
-        <Productname>djdd</Productname>
+    <Product>
+        <ProductId>P02</ProductId>
+        <ProductName>Mercedes</ProductName>
         <Brand>Mercedes</Brand>
-        <Price>1000</Price>
-        <Color>Xanh</Color>
-        <TypeProduct>222</TypeProduct>
-        <Quantity>222</Quantity>
+        <Price>100</Price>
+        <Color>Đen</Color>
+        <Quantity>567</Quantity>
+        <imgURL>google.com/img2.jpg</imgURL>
+    </Product>
+    <Product>
+        <ProductId>P03</ProductId>
+        <ProductName>Toyota</ProductName>
+        <Brand>Toyota</Brand>
+        <Price>160</Price>
+        <Color>Đen</Color>
+        <Quantity>5673</Quantity>
+        <imgURL>google.com/img2.jpg</imgURL>
+    </Product>
+    <Product>
+        <ProductId>P04</ProductId>
+        <ProductName>Mitsubishi</ProductName>
+        <Brand>Mitsubishi</Brand>
+        <Price>50</Price>
+        <Color>Đen</Color>
+        <Quantity>567</Quantity>
+        <imgURL>google.com/img2.jpg</imgURL>
     </Product>
 </Products>

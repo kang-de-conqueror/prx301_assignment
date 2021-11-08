@@ -26,7 +26,7 @@
     </xs:restriction>
 </xs:simpleType>
 
-<xs:attribute name="BillId" type="IdType"/>
+<xs:element name="BillId" type="IdType"/>
 <xs:element name="DateCreate" type="DateType"/>
 <xs:element name="IdProduct" type="IdTypeProduct"/>
 <xs:element name="IdUser" type="IdTypeUser"/>
@@ -34,11 +34,11 @@
 <xs:element name="Bill">
 <xs:complexType>
     <xs:sequence>
+        <xs:element ref="BillId"/>
         <xs:element ref="DateCreate"/>
         <xs:element ref="IdProduct"/>
         <xs:element ref="IdUser"/>
     </xs:sequence>
-    <xs:attribute ref="BillId" use="required" />
 </xs:complexType>
 </xs:element>
 

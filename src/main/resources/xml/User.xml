@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <Users
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="User.xsd">
-    <User UserId="A123">
-        <Username>khanh</Username>
-        <Password>khanh</Password>
-        <Name>sss</Name>
-        <Gender>male</Gender>
-        <Age>122</Age>
-        <NumberPhone>02923783</NumberPhone>
-        <Address>hcm</Address>
-        <Role>Cus</Role>
-    </User>
-    <User UserId="A124">
-        <Username>khanh</Username>
-        <Password>khanh</Password>
-        <Name>sss</Name>
-        <Gender>female</Gender>
-        <Age>122</Age>
-        <NumberPhone>02923783</NumberPhone>
-        <Address>hcm</Address>
-        <Role>Emp</Role>
-    </User>
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="User.xsd">
+<User>
+    <UserId>A000</UserId>
+    <Username>admin</Username>
+    <Password>123</Password>
+    <Gender>male</Gender>
+    <Age>1</Age>
+    <NumberPhone>02923783152</NumberPhone>
+    <Address>hcm</Address>
+    <Role>0</Role>
+</User>
+<User>
+    <UserId>A001</UserId>
+    <Username>cus</Username>
+    <Password>123</Password>
+    <Gender>male</Gender>
+    <Age>12</Age>
+    <NumberPhone>02923783152</NumberPhone>
+    <Address>hcm</Address>
+    <Role>1</Role>
+</User>
 </Users>
