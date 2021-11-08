@@ -4,33 +4,31 @@
  */
 package Controller;
 
-import Repository.ProductRepo;
+import Repository.ProductRepository;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Index", urlPatterns = {"/view"})
+@WebServlet(name = "IndexController", urlPatterns = {"/IndexController"})
 public class IndexController extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(IndexController.class.getName());
+    private static final String HOME = "home.jsp";
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (ProductRepo.read().isEmpty()) {
-            ProductRepo.initialData();
-        }
+        ProductRepository.initialData();
+        String url = HOME;
         try {
-            request.setAttribute("listItem", ProductRepo.read());
-            System.out.println(ProductRepo.read().size());
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-            rd.forward(request, response);
-        } catch (Exception e) {
-            Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, e);
+            request.setAttribute("listProduct", ProductRepository.read());
+        } catch (Exception ex) {
+            LOGGER.log(Level.SEVERE, "[IndexController] Error: " + ex.getMessage(), ex);
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
-    }
-
+}

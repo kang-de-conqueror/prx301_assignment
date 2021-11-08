@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import Repository.ProductRepo;
+import Repository.ProductRepository;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -22,12 +22,12 @@ import javax.servlet.http.HttpServletResponse;
 public class SortPriceOver200 extends HttpServlet {
 @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (ProductRepo.read().isEmpty()) {
-            ProductRepo.initialData();
+        if (ProductRepository.read().isEmpty()) {
+            ProductRepository.initialData();
         }
         try {
-            request.setAttribute("listItem", ProductRepo.sortByPrice(200, 99999999));
-            System.out.println(ProductRepo.read().size());
+            request.setAttribute("listItem", ProductRepository.sortByPrice(200, 99999999));
+            System.out.println(ProductRepository.read().size());
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
         } catch (Exception e) {

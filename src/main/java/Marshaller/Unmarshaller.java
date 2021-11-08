@@ -10,8 +10,9 @@ import Model.ProductList;
 import Model.User;
 import Model.UserList;
 import java.io.File;
-import static java.rmi.server.LogStream.log;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
@@ -20,8 +21,10 @@ import javax.xml.bind.JAXBException;
  * @author looby
  */
 public class Unmarshaller {
+    private static final Logger LOGGER = Logger.getLogger(Unmarshaller.class.getName());
+    
     public static ArrayList<Product> unmarshallerProduct() {
-        File xmlFile = new File("Product.xml");
+        File xmlFile = new File("xml/Product.xml");
         ArrayList<Product> listPro = new ArrayList<>();
         JAXBContext jaxbContext;
         try {
@@ -33,12 +36,12 @@ public class Unmarshaller {
             }
            
         } catch (JAXBException ex) {
-            log("");
+            LOGGER.log(Level.SEVERE, "[Unmarshaller] Error: " + ex.getMessage(), ex);
         }
         return listPro;
     }
     public static ArrayList<User> unmarshallerUser() {
-        File xmlFile = new File("User.xml");
+        File xmlFile = new File("xml/User.xml");
         ArrayList<User> userList = new ArrayList<>();
         JAXBContext jaxbContext;
         try {
@@ -50,7 +53,7 @@ public class Unmarshaller {
             }
             
         } catch (JAXBException ex) {
-            ex.printStackTrace();
+            LOGGER.log(Level.SEVERE, "[Unmarshaller] Error: " + ex.getMessage(), ex);
         }
         return userList;
     }

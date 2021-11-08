@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Index</servlet-name>
+        <servlet-name>IndexController</servlet-name>
         <servlet-class>Controller.IndexController</servlet-class>
     </servlet>
     <servlet>
@@ -33,24 +33,20 @@
         <servlet-class>Controller.SortPriceOver200</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>Controllers.Login</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>Admin</servlet-name>
         <servlet-class>Controller.AdminController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginError</servlet-name>
-        <servlet-class>Controllers.LoginError</servlet-class>
+        <servlet-class>Controller.LoginError</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>Controller.LoginController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Index</servlet-name>
-        <url-pattern>/view</url-pattern>
+        <servlet-name>IndexController</servlet-name>
+        <url-pattern>/IndexController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SortByVin</servlet-name>
@@ -81,14 +77,6 @@
         <url-pattern>/SortPrice3</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Admin</servlet-name>
-        <url-pattern>/admin</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LoginError</servlet-name>
         <url-pattern>/LoginError</url-pattern>
     </servlet-mapping>
@@ -101,4 +89,7 @@
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>

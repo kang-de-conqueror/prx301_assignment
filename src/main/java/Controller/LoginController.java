@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +18,12 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Peter
  */
+@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
 
     private static final Logger LOGGER = Logger.getLogger(LoginController.class.getName());
 
-    private static final String HOME = "home.jsp";
+    private static final String INDEX = "IndexController";
     private static final String ERROR = "error.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +37,7 @@ public class LoginController extends HttpServlet {
             if (!"admin".equals(username) || !"admin".equals(password)) {
                 request.setAttribute("errorMessage", "Username or password not match");
             } else {
-                url = HOME;
+                url = INDEX;
             }
 
         } catch (Exception ex) {

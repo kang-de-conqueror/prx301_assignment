@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author looby
  */
-public class UserRepo {
+public class UserRepository {
     private static ArrayList<User> userList = new ArrayList<>();
     public static void initialData() {
         userList = Unmarshaller.unmarshallerUser();
@@ -32,6 +32,6 @@ public class UserRepo {
     }
 
     public static List<User> read() {
-        return UserRepo.userList;
+        return UserRepository.userList;
     }
 }

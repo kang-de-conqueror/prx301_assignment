@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author looby
  */
-public class ProductRepo {
+public class ProductRepository {
 
     private static ArrayList<Product> listPro = new ArrayList<>();
 
@@ -40,15 +40,15 @@ public class ProductRepo {
     }
 
     public static void create(Product product) {
-        ProductRepo.listPro.add(product);
+        ProductRepository.listPro.add(product);
     }
 
     public static ArrayList<Product> read() {
-        return ProductRepo.listPro;
+        return ProductRepository.listPro;
     }
 
     public static Product detail(String id) {
-        for (Product pro : ProductRepo.listPro) {
+        for (Product pro : ProductRepository.listPro) {
             if (pro.getProductId().equals(id)) {
                 return pro;
             }
@@ -88,14 +88,14 @@ public class ProductRepo {
     }
 
     public void setlistPro(ArrayList<Product> listPro) {
-        ProductRepo.listPro = listPro;
+        ProductRepository.listPro = listPro;
     }
 
-    public ProductRepo(ArrayList<Product> listPro) {
-        ProductRepo.listPro = listPro;
+    public ProductRepository(ArrayList<Product> listPro) {
+        ProductRepository.listPro = listPro;
     }
 
-    public ProductRepo() {
+    public ProductRepository() {
         listPro = new ArrayList<>();
     }
 }

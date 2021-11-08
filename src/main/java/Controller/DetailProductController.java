@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import Repository.ProductRepo;
+import Repository.ProductRepository;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author looby
  */
-@WebServlet(name = "DetailProduct", urlPatterns = {"/DetailProduct"})
+@WebServlet(name = "DetailProductController", urlPatterns = {"/DetailProductController"})
 public class DetailProductController extends HttpServlet {
     private static final Logger LOGGER = Logger.getLogger(DetailProductController.class.getName());
 
@@ -28,7 +28,7 @@ public class DetailProductController extends HttpServlet {
 
         try {
             // Đưa dữ liệu về trang details.jsp
-            request.setAttribute("item", ProductRepo.detail(productId));
+            request.setAttribute("item", ProductRepository.detail(productId));
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/details.jsp");
             rd.forward(request, response);
 
