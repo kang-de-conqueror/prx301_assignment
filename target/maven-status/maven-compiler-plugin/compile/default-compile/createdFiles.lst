@@ -1,6 +1,6 @@
 Model\Product.class
 Repo\ProductRepo.class
+Model\User.class
 Model\Bill.class
 Controllers\DetailProduct.class
-Model\User.class
 Controllers\Index.class
