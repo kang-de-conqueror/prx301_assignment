@@ -38,7 +38,6 @@ public class UnmarshallerService {
             for (Product product : productList.getProduct()) {
                 products.add(product);
             }
-            LOGGER.log(Level.SEVERE, "Size product: " + products.size());
         } catch (JAXBException ex) {
             LOGGER.log(Level.SEVERE, "[Unmarshaller] Error: " + ex.getMessage(), ex);
         }
@@ -48,7 +47,7 @@ public class UnmarshallerService {
     public ArrayList<User> unmarshallerUser() {
         ArrayList<User> users = new ArrayList<>();
         try {
-            InputStream xmlFile = getClass().getResourceAsStream("/xml/Product.xml");
+            InputStream xmlFile = getClass().getResourceAsStream("/xml/User.xml");
             if (null == xmlFile) {
                 return users;
             }

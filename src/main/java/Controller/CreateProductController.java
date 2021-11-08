@@ -5,6 +5,8 @@
  */
 package Controller;
 
+import Model.Product;
+import Repository.ProductRepository;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,40 +16,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Peter
- */
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "CreateProductController", urlPatterns = {"/create_product"})
+public class CreateProductController extends HttpServlet {
 
-    private static final Logger LOGGER = Logger.getLogger(LoginController.class.getName());
-
+    private static final Logger LOGGER = Logger.getLogger(CreateProductController.class.getName());
     private static final String HOME = "home";
-    private static final String ERROR = "error.jsp";
+    private static final String CREATE_PRODUCT_PAGE = "create_product.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
+        String url = HOME;
         try {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
+            boolean isValid = true;
 
-            if (!"admin".equals(username) || !"admin".equals(password)) {
-                request.setAttribute("errorMessage", "Username or password not match");
+            String id = request.getParameter("id");
+            String name = request.getParameter("name");
+            String brand = request.getParameter("brand");
+            String color = request.getParameter("color");
+            Integer price = Integer.parseInt(request.getParameter("price"));
+            Integer quantity = Integer.parseInt(request.getParameter("quantity"));
+            String imgUrl = "";
+
+            if (isValid) {
+                Product product = new Product(id, name, brand, price, color, quantity, imgUrl);
+                if (!ProductRepository.create(product)) {
+                    url = CREATE_PRODUCT_PAGE;
+                    request.setAttribute("errorMessage", "Cannot create new product. Please try again!");
+                }
+                LOGGER.log(Level.SEVERE, "Products size: " + ProductRepository.read().size());
             } else {
-                url = HOME;
+                request.setAttribute("errorMessage", "Please fill full of information!");
+                url = CREATE_PRODUCT_PAGE;
             }
 
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, "[Login Controller] Error: " + ex.getMessage(), ex);
+            LOGGER.log(Level.SEVERE, "[CreateProductController] Error: " + ex.getMessage(), ex);
         } finally {
-            if (!request.getAttributeNames().hasMoreElements()) {
-                response.sendRedirect(url);
-            } else {
-                request.getRequestDispatcher(url).forward(request, response);
-            }
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

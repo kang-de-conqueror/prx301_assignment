@@ -6,10 +6,8 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,36 +16,31 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Peter
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
-public class LoginController extends HttpServlet {
+public class UpdateProductController extends HttpServlet {
 
-    private static final Logger LOGGER = Logger.getLogger(LoginController.class.getName());
-
-    private static final String HOME = "home";
-    private static final String ERROR = "error.jsp";
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        try {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-
-            if (!"admin".equals(username) || !"admin".equals(password)) {
-                request.setAttribute("errorMessage", "Username or password not match");
-            } else {
-                url = HOME;
-            }
-
-        } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, "[Login Controller] Error: " + ex.getMessage(), ex);
-        } finally {
-            if (!request.getAttributeNames().hasMoreElements()) {
-                response.sendRedirect(url);
-            } else {
-                request.getRequestDispatcher(url).forward(request, response);
-            }
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet UpdateProductController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet UpdateProductController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

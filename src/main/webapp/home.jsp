@@ -15,9 +15,10 @@
         <link rel="stylesheet" type="text/css" href="css\main.css"/>
     </head>
     <body>
+        <h1>Car Management</h1>
         <ul class="ul-view">
             <li class="left-menu">
-                
+
                 <ul style="list-style-type: none;display: list-item;">
                     <a href="view">TẤT CẢ SẢN PHẨM</a>
                     THƯƠNG HIỆU
@@ -34,6 +35,7 @@
             </li>
             <li>
                 <div class="content-view">
+                    <a href="create_product.jsp" >Create new product</a>
                     <table class="table">
                         <thead>
                             <tr>
@@ -45,20 +47,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                        
-                            <c:forEach var="row" items="${requestScope.products}">
+
+                            <c:forEach var="p" items="${sessionScope.products}">
                                 <tr class="right-content">
 
-                                    <td><c:out value="${row.getProductName()}"/></td>
-                                    <td><c:out value="${row.getBrand()}"/></td>
-                                    <td><c:out value="${row.getColor()}"/></td>
-                                    <td><c:out value="${row.getPrice()}"/></td>
-                                    <td><c:out value="${row.getQuantity()}"/></td>
+                                    <td><c:out value="${p.getName()}"/></td>
+                                    <td><c:out value="${p.getBrand()}"/></td>
+                                    <td><c:out value="${p.getColor()}"/></td>
+                                    <td><c:out value="${p.getPrice()}"/></td>
+                                    <td><c:out value="${p.getQuantity()}"/></td>
+<!--                                    <td>
+                                        <a href="BuyProductController?id=${p.getId()}" >Buy</a>
+                                        <a href="detail?id=${p.getId()}" >View</a>
+                                    </td>-->
                                     <td>
-                                        <a href="chitiet?maso=${row.getProductId()}" >Chọn mua</a>
-                                        <a href="chitiet?maso=${row.getProductId()}" >Chi tiết</a>
-                                        <a href="capnhat?maso=${row.getProductId()}" >Chỉnh sửa</a>
-                                        <a href="xoa?maso=${row.getProductId()}" >Xóa</a>
+                                        <a href="update_product?id=${p.getId()}" >Edit</a>
+                                    </td>
+                                    <td>
+                                        <a href="delete_product?id=${p.getId()}" >Delete</a>
                                     </td>
                                 </tr>
                             </c:forEach>

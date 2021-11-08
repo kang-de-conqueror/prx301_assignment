@@ -31,7 +31,7 @@ public class SortPrice100to200 extends HttpServlet {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
         } catch (Exception e) {
-            Logger.getLogger(IndexController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 }

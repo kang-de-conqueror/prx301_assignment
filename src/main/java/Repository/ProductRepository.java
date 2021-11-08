@@ -6,77 +6,85 @@ package Repository;
 
 import Marshaller.UnmarshallerService;
 import Model.Product;
-import Model.ProductList;
 import java.util.ArrayList;
 
-/**
- *
- * @author looby
- */
 public class ProductRepository {
 
     private static ArrayList<Product> listPro = new ArrayList<>();
-    private static final UnmarshallerService unmarshaller = new UnmarshallerService();
+    private static final UnmarshallerService unmarshallerService = new UnmarshallerService();
 
     public static void initialData() {
-        listPro = unmarshaller.unmarshallerProduct();
-    }
-    public static ArrayList<Product> sortByName(String brand){
-        ArrayList<Product> list = new ArrayList<>();
-        for (Product product : unmarshaller.unmarshallerProduct()) {
-            if(product.getBrand().equals(brand)){
-                list.add(product);
-            }
+        if (listPro.isEmpty()) {
+            listPro = unmarshallerService.unmarshallerProduct();
         }
-        return list;
     }
-    public static ArrayList<Product> sortByPrice(int low, int high){
+
+    public static ArrayList<Product> sortByName(String brand) {
         ArrayList<Product> list = new ArrayList<>();
-        for (Product product : unmarshaller.unmarshallerProduct()) {
-            if(product.getPrice() >= low && product.getPrice() <= high){
+        for (Product product : unmarshallerService.unmarshallerProduct()) {
+            if (product.getBrand().equals(brand)) {
                 list.add(product);
             }
         }
         return list;
     }
 
-    public static void create(Product product) {
-        ProductRepository.listPro.add(product);
+    public static ArrayList<Product> sortByPrice(int low, int high) {
+        ArrayList<Product> list = new ArrayList<>();
+        for (Product product : unmarshallerService.unmarshallerProduct()) {
+            if (product.getPrice() >= low && product.getPrice() <= high) {
+                list.add(product);
+            }
+        }
+        return list;
+    }
+
+    public static boolean create(Product product) {
+        for (Product p : listPro) {
+            if (p.getId().equals(product.getId())) {
+                return false;
+            }
+        }
+        listPro.add(product);
+        return true;
     }
 
     public static ArrayList<Product> read() {
-        return ProductRepository.listPro;
+        return listPro;
     }
 
     public static Product detail(String id) {
-        for (Product pro : ProductRepository.listPro) {
-            if (pro.getProductId().equals(id)) {
+        for (Product pro : ProductRepository.read()) {
+            if (id.equals(pro.getId())) {
                 return pro;
             }
         }
         return null;
     }
 
-    public static void update(Product pro) {
+    public static boolean update(Product pro) {
         for (int i = 0; i < listPro.size(); i++) {
-            if (listPro.get(i).getProductId().equals(pro.getProductId())) {
+            if (pro.getId().equals(listPro.get(i).getId())) {
                 listPro.set(i, pro);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
-    public static void delete(String id) {
+    public static boolean delete(String id) {
         int index = -1;
         for (int i = 0; i < listPro.size(); i++) {
-            if (listPro.get(i).getProductId().equals(id)) {
+            if (id.equals(listPro.get(i).getId())) {
                 index = i;
                 break;
             }
         }
         if (index > -1) {
             listPro.remove(index);
+            return true;
         }
+        return false;
     }
 
     @Override

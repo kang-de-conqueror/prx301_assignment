@@ -5,11 +5,11 @@
  */
 package Controller;
 
+import Repository.ProductRepository;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,36 +18,24 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Peter
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
-public class LoginController extends HttpServlet {
-
-    private static final Logger LOGGER = Logger.getLogger(LoginController.class.getName());
-
-    private static final String HOME = "home";
-    private static final String ERROR = "error.jsp";
-
+public class DeleteProductController extends HttpServlet {
+    private static Logger LOGGER = Logger.getLogger(DeleteProductController.class.getName());
+    private static String HOME = "home";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
+        String url = HOME;
         try {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-
-            if (!"admin".equals(username) || !"admin".equals(password)) {
-                request.setAttribute("errorMessage", "Username or password not match");
-            } else {
-                url = HOME;
+            String productId = request.getParameter("id");
+            if (!ProductRepository.delete(productId)) {
+                request.setAttribute("errorMessage", "Cannot delete this product");
             }
-
+            
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, "[Login Controller] Error: " + ex.getMessage(), ex);
+            LOGGER.log(Level.SEVERE, "[DeleteProductController] Error: " + ex.getMessage(), ex);
         } finally {
-            if (!request.getAttributeNames().hasMoreElements()) {
-                response.sendRedirect(url);
-            } else {
-                request.getRequestDispatcher(url).forward(request, response);
-            }
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
