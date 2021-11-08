@@ -4,7 +4,9 @@
  */
 package Repo;
 
+import Marshaller.Unmarshaller;
 import Model.Product;
+import Model.ProductList;
 import java.util.ArrayList;
 
 /**
@@ -16,10 +18,25 @@ public class ProductRepo {
     private static ArrayList<Product> listPro = new ArrayList<>();
 
     public static void initialData() {
-        listPro.add(new Product("P1", "car1", "brand 1", 100, "Green", "sang", "/car1.jpg", 1000));
-        listPro.add(new Product("P2", "car2", "brand 4", 200, "Blue", "xin", "/car2.jpg", 1000));
-        listPro.add(new Product("P3", "car3", "brand 4", 300, "Red", "sang", "/car3.jpg", 1000));
-
+        listPro = Unmarshaller.unmarshaller();
+    }
+    public static ArrayList<Product> sortByName(String brand){
+        ArrayList<Product> list = new ArrayList<>();
+        for (Product product : Unmarshaller.unmarshaller()) {
+            if(product.getBrand().equals(brand)){
+                list.add(product);
+            }
+        }
+        return list;
+    }
+    public static ArrayList<Product> sortByPrice(int low, int high){
+        ArrayList<Product> list = new ArrayList<>();
+        for (Product product : Unmarshaller.unmarshaller()) {
+            if(product.getPrice() >= low && product.getPrice() <= high){
+                list.add(product);
+            }
+        }
+        return list;
     }
 
     public static void create(Product product) {
@@ -63,7 +80,7 @@ public class ProductRepo {
 
     @Override
     public String toString() {
-        return  "ProductRepo{" + "listPro=" + listPro + '}';
+        return "ProductRepo{" + "listPro=" + listPro + '}';
     }
 
     public ArrayList<Product> getlistPro() {

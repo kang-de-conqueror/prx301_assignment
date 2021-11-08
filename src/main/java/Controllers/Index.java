@@ -6,7 +6,6 @@ package Controllers;
 
 import Repo.ProductRepo;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Index", urlPatterns = {"/index"})
+@WebServlet(name = "Index", urlPatterns = {"/view"})
 public class Index extends HttpServlet {
 
     @Override
@@ -26,6 +25,7 @@ public class Index extends HttpServlet {
         }
         try {
             request.setAttribute("listItem", ProductRepo.read());
+            System.out.println(ProductRepo.read().size());
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
         } catch (Exception e) {

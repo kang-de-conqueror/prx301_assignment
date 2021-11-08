@@ -4,92 +4,94 @@
  */
 package Model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Product")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Product {
-    private String productId;
-    private String productName;
-    private String brand;
-    private int price;
-    private String color;
-    private String typeProduct;
-    private String productImg;
-    private int quantity;
+    private static final long serialVersionUID = 1L;
+    private String ProductId;
+    private String ProductName;
+    private String Brand;
+    private int Price;
+    private String Color;
+    private int Quantity;
+    private String imgURL;
 
     public Product() {
     }
 
-    public Product(String productId, String productName, String brand, int price, String color, String typeProduct, String productImg, int quantity) {
-        this.productId = productId;
-        this.productName = productName;
-        this.brand = brand;
-        this.price = price;
-        this.color = color;
-        this.typeProduct = typeProduct;
-        this.productImg = productImg;
-        this.quantity = quantity;
+    public Product(String ProductId, String ProductName, String Brand, int Price, String Color, int Quantity, String imgURL) {
+        this.ProductId = ProductId;
+        this.ProductName = ProductName;
+        this.Brand = Brand;
+        this.Price = Price;
+        this.Color = Color;
+        this.Quantity = Quantity;
+        this.imgURL = imgURL;
     }
 
     public String getProductId() {
-        return productId;
+        return ProductId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProductId(String ProductId) {
+        this.ProductId = ProductId;
     }
 
     public String getProductName() {
-        return productName;
+        return ProductName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setProductName(String ProductName) {
+        this.ProductName = ProductName;
     }
 
     public String getBrand() {
-        return brand;
+        return Brand;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setBrand(String Brand) {
+        this.Brand = Brand;
     }
 
     public int getPrice() {
-        return price;
+        return Price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPrice(int Price) {
+        this.Price = Price;
     }
 
     public String getColor() {
-        return color;
+        return Color;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getTypeProduct() {
-        return typeProduct;
-    }
-
-    public void setTypeProduct(String typeProduct) {
-        this.typeProduct = typeProduct;
-    }
-
-    public String getProductImg() {
-        return productImg;
-    }
-
-    public void setProductImg(String productImg) {
-        this.productImg = productImg;
+    public void setColor(String Color) {
+        this.Color = Color;
     }
 
     public int getQuantity() {
-        return quantity;
+        return Quantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity(int Quantity) {
+        this.Quantity = Quantity;
     }
 
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "ProductId=" + ProductId + ", ProductName=" + ProductName + ", Brand=" + Brand + ", Price=" + Price + ", Color=" + Color + ", Quantity=" + Quantity + ", imgURL=" + imgURL + '}';
+    }
+    
 }

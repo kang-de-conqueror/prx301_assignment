@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,25 +19,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author looby
  */
-@WebServlet(name = "DetailProduct", urlPatterns = {"/DetailProduct"})
-public class DetailProduct extends HttpServlet {
-
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-
-         String productId = request.getParameter("productId");
-
+public class SortByMitsubishi extends HttpServlet {
+@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (ProductRepo.read().isEmpty()) {
+            ProductRepo.initialData();
+        }
         try {
-            // Đưa dữ liệu về trang details.jsp
-            request.setAttribute("item", ProductRepo.detail(productId));
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/details.jsp");
+            request.setAttribute("listItem", ProductRepo.sortByName("Mitsubishi"));
+            System.out.println(ProductRepo.read().size());
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
             rd.forward(request, response);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 }
-
-
-

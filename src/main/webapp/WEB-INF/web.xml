@@ -4,9 +4,89 @@
         <servlet-name>Index</servlet-name>
         <servlet-class>Controllers.Index</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SortByVin</servlet-name>
+        <servlet-class>Controllers.SortByVin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SortByToyota</servlet-name>
+        <servlet-class>Controllers.SortByToyota</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SortByMercedes</servlet-name>
+        <servlet-class>Controllers.SortByMercedes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SortByMitsubishi</servlet-name>
+        <servlet-class>Controllers.SortByMitsubishi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SortPrice0to100</servlet-name>
+        <servlet-class>Controllers.SortPrice0to100</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SortPrice100to200</servlet-name>
+        <servlet-class>Controllers.SortPrice100to200</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SortPriceOver200</servlet-name>
+        <servlet-class>Controllers.SortPriceOver200</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Controllers.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>Controllers.Admin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginError</servlet-name>
+        <servlet-class>Controllers.LoginError</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <url-pattern>/view</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SortByVin</servlet-name>
+        <url-pattern>/SortByVin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SortByToyota</servlet-name>
+        <url-pattern>/SortByToyota</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SortByMercedes</servlet-name>
+        <url-pattern>/SortByMercedes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SortByMitsubishi</servlet-name>
+        <url-pattern>/SortByMitsubishi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SortPrice0to100</servlet-name>
+        <url-pattern>/SortPrice1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SortPrice100to200</servlet-name>
+        <url-pattern>/SortPrice2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SortPriceOver200</servlet-name>
+        <url-pattern>/SortPrice3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginError</servlet-name>
+        <url-pattern>/LoginError</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
