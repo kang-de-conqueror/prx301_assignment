@@ -24,7 +24,7 @@ public class IndexController extends HttpServlet {
         ProductRepository.initialData();
         String url = HOME;
         try {
-            request.setAttribute("listProduct", ProductRepository.read());
+            request.setAttribute("products", ProductRepository.read());
         } catch (Exception ex) {
             LOGGER.log(Level.SEVERE, "[IndexController] Error: " + ex.getMessage(), ex);
         } finally {

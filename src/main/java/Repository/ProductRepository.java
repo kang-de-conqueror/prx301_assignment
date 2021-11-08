@@ -4,7 +4,7 @@
  */
 package Repository;
 
-import Marshaller.Unmarshaller;
+import Marshaller.UnmarshallerService;
 import Model.Product;
 import Model.ProductList;
 import java.util.ArrayList;
@@ -16,13 +16,14 @@ import java.util.ArrayList;
 public class ProductRepository {
 
     private static ArrayList<Product> listPro = new ArrayList<>();
+    private static final UnmarshallerService unmarshaller = new UnmarshallerService();
 
     public static void initialData() {
-        listPro = Unmarshaller.unmarshallerProduct();
+        listPro = unmarshaller.unmarshallerProduct();
     }
     public static ArrayList<Product> sortByName(String brand){
         ArrayList<Product> list = new ArrayList<>();
-        for (Product product : Unmarshaller.unmarshallerProduct()) {
+        for (Product product : unmarshaller.unmarshallerProduct()) {
             if(product.getBrand().equals(brand)){
                 list.add(product);
             }
@@ -31,7 +32,7 @@ public class ProductRepository {
     }
     public static ArrayList<Product> sortByPrice(int low, int high){
         ArrayList<Product> list = new ArrayList<>();
-        for (Product product : Unmarshaller.unmarshallerProduct()) {
+        for (Product product : unmarshaller.unmarshallerProduct()) {
             if(product.getPrice() >= low && product.getPrice() <= high){
                 list.add(product);
             }

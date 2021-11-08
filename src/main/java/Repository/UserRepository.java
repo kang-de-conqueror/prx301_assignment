@@ -4,8 +4,7 @@
  */
 package Repository;
 
-import Marshaller.Unmarshaller;
-import Model.Product;
+import Marshaller.UnmarshallerService;
 import Model.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +15,14 @@ import java.util.List;
  */
 public class UserRepository {
     private static ArrayList<User> userList = new ArrayList<>();
+    private static final UnmarshallerService unmarshaller = new UnmarshallerService();
+    
     public static void initialData() {
-        userList = Unmarshaller.unmarshallerUser();
+        userList = unmarshaller.unmarshallerUser();
     }
     public static boolean checkLogin(String username, String password) {
         boolean result = false;
-        userList = Unmarshaller.unmarshallerUser();
+        userList = unmarshaller.unmarshallerUser();
         for (User user : userList) {
             if (user.getUsername().equals(username)
                     && user.getPassword().equals(password) && user.getRole() == 0) {

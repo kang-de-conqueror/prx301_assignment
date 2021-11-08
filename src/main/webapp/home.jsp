@@ -46,7 +46,7 @@
                         </thead>
                         <tbody>
                         
-                            <c:forEach var="row" items="${requestScope.listItem}">
+                            <c:forEach var="row" items="${requestScope.products}">
                                 <tr class="right-content">
 
                                     <td><c:out value="${row.getProductName()}"/></td>

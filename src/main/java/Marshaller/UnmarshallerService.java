@@ -4,58 +4,66 @@
  */
 package Marshaller;
 
-
 import Model.Product;
 import Model.ProductList;
 import Model.User;
 import Model.UserList;
-import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
  * @author looby
  */
-public class Unmarshaller {
-    private static final Logger LOGGER = Logger.getLogger(Unmarshaller.class.getName());
-    
-    public static ArrayList<Product> unmarshallerProduct() {
-        File xmlFile = new File("xml/Product.xml");
-        ArrayList<Product> listPro = new ArrayList<>();
-        JAXBContext jaxbContext;
+public class UnmarshallerService {
+
+    private static final Logger LOGGER = Logger.getLogger(UnmarshallerService.class.getName());
+
+    public ArrayList<Product> unmarshallerProduct() {
+        ArrayList<Product> products = new ArrayList<>();
         try {
+            InputStream xmlFile = getClass().getResourceAsStream("/xml/Product.xml");
+            if (null == xmlFile) {
+                return products;
+            }
+            JAXBContext jaxbContext;
             jaxbContext = JAXBContext.newInstance(ProductList.class);
-            javax.xml.bind.Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             ProductList productList = (ProductList) jaxbUnmarshaller.unmarshal(xmlFile);
             for (Product product : productList.getProduct()) {
-                listPro.add(product);
+                products.add(product);
             }
-           
+            LOGGER.log(Level.SEVERE, "Size product: " + products.size());
         } catch (JAXBException ex) {
             LOGGER.log(Level.SEVERE, "[Unmarshaller] Error: " + ex.getMessage(), ex);
         }
-        return listPro;
+        return products;
     }
-    public static ArrayList<User> unmarshallerUser() {
-        File xmlFile = new File("xml/User.xml");
-        ArrayList<User> userList = new ArrayList<>();
-        JAXBContext jaxbContext;
+
+    public ArrayList<User> unmarshallerUser() {
+        ArrayList<User> users = new ArrayList<>();
         try {
+            InputStream xmlFile = getClass().getResourceAsStream("/xml/Product.xml");
+            if (null == xmlFile) {
+                return users;
+            }
+            JAXBContext jaxbContext;
             jaxbContext = JAXBContext.newInstance(UserList.class);
             javax.xml.bind.Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            UserList users = (UserList) jaxbUnmarshaller.unmarshal(xmlFile);
-            for (User user : users.getUserList()) {
-                userList.add(user);
+            UserList userList = (UserList) jaxbUnmarshaller.unmarshal(xmlFile);
+            for (User user : userList.getUserList()) {
+                users.add(user);
             }
-            
+
         } catch (JAXBException ex) {
             LOGGER.log(Level.SEVERE, "[Unmarshaller] Error: " + ex.getMessage(), ex);
         }
-        return userList;
+        return users;
     }
-  
+
 }
