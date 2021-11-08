@@ -4,93 +4,96 @@
  */
 package Model;
 
-/**
- *
- * @author looby
- */
-public class User {
-    private String userID;
-    private String password;
-    private String userName;
-    private String gender;
-    private int age;
-    private String phoneNumber;
-    private String address;
-    private int role;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
-    public String getUserID() {
-        return userID;
+@XmlRootElement(name="User")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class User {
+    private static final long serialVersionUID =1L;
+    private String UserId;
+    private String Username;
+    private String Password;
+    private String Gender;
+    private int Age;
+    private String NumberPhone;
+    private String Address;
+    private int Role;
+
+    public String getUserId() {
+        return UserId;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserId(String UserId) {
+        this.UserId = UserId;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String Username) {
+        this.Username = Username;
     }
 
     public String getPassword() {
-        return password;
+        return Password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
     public String getGender() {
-        return gender;
+        return Gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(String Gender) {
+        this.Gender = Gender;
     }
 
     public int getAge() {
-        return age;
+        return Age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAge(int Age) {
+        this.Age = Age;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getNumberPhone() {
+        return NumberPhone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setNumberPhone(String NumberPhone) {
+        this.NumberPhone = NumberPhone;
     }
 
     public String getAddress() {
-        return address;
+        return Address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress(String Address) {
+        this.Address = Address;
     }
 
     public int getRole() {
-        return role;
+        return Role;
     }
 
-    public void setRole(int role) {
-        this.role = role;
+    public void setRole(int Role) {
+        this.Role = Role;
     }
 
-    public User(String userID, String password, String userName, String gender, int age, String phoneNumber, String address, int role) {
-        this.userID = userID;
-        this.password = password;
-        this.userName = userName;
-        this.gender = gender;
-        this.age = age;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.role = role;
+    public User(String UserId, String Username, String Password, String Gender, int Age, String NumberPhone, String Address, int Role) {
+        this.UserId = UserId;
+        this.Username = Username;
+        this.Password = Password;
+        this.Gender = Gender;
+        this.Age = Age;
+        this.NumberPhone = NumberPhone;
+        this.Address = Address;
+        this.Role = Role;
     }
 
     public User() {

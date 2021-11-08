@@ -1,0 +1,22 @@
+
+.table{
+    border: 1px solid black;
+}
+.ulView{
+    display: flex;
+    list-style-type: none;
+}
+.leftMenu{
+    width: 200px;
+    /*border: 1px solid black;*/
+}
+.contentView{
+    width: 100%;
+    border: 1px solid blue;
+}
+ul >li{
+    padding-left: 20px;
+}
+.rightContent >  td{
+    border: 1px solid black;
+}
