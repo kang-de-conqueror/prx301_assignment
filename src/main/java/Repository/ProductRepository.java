@@ -35,7 +35,7 @@ public class ProductRepository {
         }
         ArrayList<Product> list = new ArrayList<>();
         for (Product product : products) {
-            if (product.getName().contains(name)) {
+            if (product.getName().toLowerCase().contains(name.toLowerCase())) {
                 list.add(product);
             }
         }
