@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import Model.Product;
 import Repository.ProductRepository;
 import java.io.IOException;
 import java.util.logging.Level;

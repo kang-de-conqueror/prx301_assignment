@@ -5,9 +5,9 @@
  */
 package Controller;
 
-import Model.Product;
 import Repository.ProductRepository;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -16,41 +16,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "CreateProductController", urlPatterns = {"/create_product"})
-public class CreateProductController extends HttpServlet {
+@WebServlet(name = "HomeController", urlPatterns = {"/home"})
+public class SortController extends HttpServlet {
 
-    private static final Logger LOGGER = Logger.getLogger(CreateProductController.class.getName());
-    private static final String HOME = "home";
-    private static final String CREATE_PRODUCT_PAGE = "create_product.jsp";
+    private static final Logger LOGGER = Logger.getLogger(HomeController.class.getName());
+    private static final String HOME = "home.jsp";
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        ProductRepository.initialData();
         String url = HOME;
-        try {
-            boolean isValid = true;
-
-            String id = request.getParameter("id");
-            String name = request.getParameter("name");
+        try {            
             String brand = request.getParameter("brand");
-            String color = request.getParameter("color");
-            Integer price = Integer.parseInt(request.getParameter("price"));
-            Integer quantity = Integer.parseInt(request.getParameter("quantity"));
-            String imgUrl = request.getParameter("imgUrl");
-
-            if (isValid) {
-                Product product = new Product(id, name, brand, price, color, quantity, imgUrl);
-                if (!ProductRepository.create(product)) {
-                    url = CREATE_PRODUCT_PAGE;
-                    request.setAttribute("errorMessage", "Cannot create new product. Please try again!");
-                }
-            } else {
-                request.setAttribute("errorMessage", "Please fill full of information!");
-                url = CREATE_PRODUCT_PAGE;
-            }
+            request.getSession().setAttribute("products", ProductRepository.sortByName(brand));
 
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, "[CreateProductController] Error: " + ex.getMessage(), ex);
+            LOGGER.log(Level.SEVERE, "[SortController] Error: " + ex.getMessage(), ex);
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

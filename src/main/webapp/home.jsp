@@ -17,18 +17,19 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
             <div class="d-flex">
+                <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownBrand" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         THƯƠNG HIỆU
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownBrand">
-                        <a class="dropdown-item" href="SortByVin">Vinfast</a>
-                        <a class="dropdown-item" href="SortByToyota">Toyota</a>
-                        <a class="dropdown-item" href="SortByMercedes">Mercedes</a>
-                        <a class="dropdown-item" href="SortByMitsubishi">Mitsubishi</a>
+                        <a class="dropdown-item" href="sort?brand=Vinfast">Vinfast</a>
+                        <a class="dropdown-item" href="sort?brand=Toyota">Toyota</a>
+                        <a class="dropdown-item" href="sort?brand=Mercedes">Mercedes</a>
+                        <a class="dropdown-item" href="sort?brand=Mitsubishi">Mitsubishi</a>
                     </div>
                 </div>
-                <div>
+<!--                <div>
                     <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownPrice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         GIÁ CẢ
                     </a>
@@ -37,11 +38,11 @@
                         <a class="dropdown-item" href="SortPrice2">Từ 100tr - 200tr</a>
                         <a class="dropdown-item" href="SortPrice3">Trên 200tr</a>
                     </div>
-                </div>
+                </div>-->
                 <a class="nav-link" href="create_product.jsp" >Create new product</a>
             </div>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search product" aria-label="Search product">
+            <form class="form-inline my-2 my-lg-0" method="GET" action="search">
+                <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search product" aria-label="Search product">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </nav>
@@ -51,6 +52,7 @@
                 <thead>
                     <tr>
                         <th>Tên</th>
+                        <th>Hình ảnh</th>
                         <th>Thương hiệu</th>
                         <th>Màu</th>
                         <th>Giá</th>
@@ -63,16 +65,15 @@
                         <tr class="right-content">
 
                             <td><c:out value="${p.getName()}"/></td>
+                            <td>
+                                <img src="<c:out value="${p.getImgUrl()}"/>" width="250px" />
+                            </td>
                             <td><c:out value="${p.getBrand()}"/></td>
                             <td><c:out value="${p.getColor()}"/></td>
                             <td><c:out value="${p.getPrice()}"/></td>
                             <td><c:out value="${p.getQuantity()}"/></td>
-                            <!--                                    <td>
-                                                                    <a href="BuyProductController?id=${p.getId()}" >Buy</a>
-                                                                    <a href="detail?id=${p.getId()}" >View</a>
-                                                                </td>-->
                             <td>
-                                <a href="update_product?id=${p.getId()}" >Edit</a>
+                                <a href="update_product?id=${p.getId()}&action=Redirect" >Edit</a>
                             </td>
                             <td>
                                 <a href="delete_product?id=${p.getId()}" >Delete</a>

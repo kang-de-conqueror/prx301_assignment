@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import Model.Product;
 import Repository.ProductRepository;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -16,41 +15,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "CreateProductController", urlPatterns = {"/create_product"})
-public class CreateProductController extends HttpServlet {
-
-    private static final Logger LOGGER = Logger.getLogger(CreateProductController.class.getName());
-    private static final String HOME = "home";
-    private static final String CREATE_PRODUCT_PAGE = "create_product.jsp";
-
+/**
+ *
+ * @author Peter
+ */
+@WebServlet(name = "SearchController", urlPatterns = {"/search"})
+public class SearchController extends HttpServlet {
+    private static final Logger LOGGER = Logger.getLogger(SearchController.class.getName());
+    private static final String HOME = "home.jsp";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = HOME;
         try {
-            boolean isValid = true;
-
-            String id = request.getParameter("id");
             String name = request.getParameter("name");
-            String brand = request.getParameter("brand");
-            String color = request.getParameter("color");
-            Integer price = Integer.parseInt(request.getParameter("price"));
-            Integer quantity = Integer.parseInt(request.getParameter("quantity"));
-            String imgUrl = request.getParameter("imgUrl");
-
-            if (isValid) {
-                Product product = new Product(id, name, brand, price, color, quantity, imgUrl);
-                if (!ProductRepository.create(product)) {
-                    url = CREATE_PRODUCT_PAGE;
-                    request.setAttribute("errorMessage", "Cannot create new product. Please try again!");
-                }
-            } else {
-                request.setAttribute("errorMessage", "Please fill full of information!");
-                url = CREATE_PRODUCT_PAGE;
-            }
-
+            request.getSession().setAttribute("products", ProductRepository.search(name));
         } catch (Exception ex) {
-            LOGGER.log(Level.SEVERE, "[CreateProductController] Error: " + ex.getMessage(), ex);
+            LOGGER.log(Level.SEVERE, "[SearchController] Error: " + ex.getMessage(), ex);
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

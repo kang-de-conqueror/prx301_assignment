@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Products xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Product.xsd">
+<Products xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/Product.xsd">
     <Product>
         <Id>P01</Id>
-        <Name>Vinfast Lux A</Name>
+        <Name>Lux A2.0</Name>
         <Brand>Vinfast</Brand>
-        <Price>1000</Price>
-        <Color>Trắng Ngọc Trinh</Color>
-        <Quantity>22</Quantity>
-        <ImgUrl>google.com/img.jpg</ImgUrl>
+        <Price>881695000</Price>
+        <Color>Đen</Color>
+        <Quantity>10</Quantity>
+        <ImgUrl>https://vinfastvn.com.vn/wp-content/uploads/2021/01/LUX-A-M2-Black-min.png</ImgUrl>
     </Product>
-
+    <Product>
+        <Id>P02</Id>
+        <Name>Lux SA2.0</Name>
+        <Brand>Vinfast</Brand>
+        <Price>1126165000</Price>
+        <Color>Đen</Color>
+        <Quantity>10</Quantity>
+        <ImgUrl>https://i.xeoto.com.vn/auto/w600/vinfast/lux-sa20/vinfast-lux-sa20-2022.png</ImgUrl>
+    </Product>
+    <Product>
+        <Id>P03</Id>
+        <Name>Fadil</Name>
+        <Brand>Vinfast</Brand>
+        <Price>382500000</Price>
+        <Color>Đỏ</Color>
+        <Quantity>10</Quantity>
+        <ImgUrl>https://vinfasthoabinh.vn/wp-content/uploads/2019/08/11-1.png</ImgUrl>
+    </Product>
     <Product>
         <Id>P02</Id>
         <Name>Mercedes</Name>

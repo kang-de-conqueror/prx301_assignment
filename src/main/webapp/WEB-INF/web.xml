@@ -56,6 +56,14 @@
         <servlet-name>CreateProductController</servlet-name>
         <servlet-class>Controller.CreateProductController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SortController</servlet-name>
+        <servlet-class>Controller.SortController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>Controller.SearchController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>IndexController</servlet-name>
         <url-pattern>/IndexController</url-pattern>
@@ -107,6 +115,14 @@
     <servlet-mapping>
         <servlet-name>CreateProductController</servlet-name>
         <url-pattern>/create_product</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SortController</servlet-name>
+        <url-pattern>/sort</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

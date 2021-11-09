@@ -10,19 +10,32 @@ import java.util.ArrayList;
 
 public class ProductRepository {
 
-    private static ArrayList<Product> listPro = new ArrayList<>();
+    private static ArrayList<Product> products = new ArrayList<>();
     private static final UnmarshallerService unmarshallerService = new UnmarshallerService();
 
     public static void initialData() {
-        if (listPro.isEmpty()) {
-            listPro = unmarshallerService.unmarshallerProduct();
+        if (products.isEmpty()) {
+            products = unmarshallerService.unmarshallerProduct();
         }
     }
 
     public static ArrayList<Product> sortByName(String brand) {
         ArrayList<Product> list = new ArrayList<>();
-        for (Product product : unmarshallerService.unmarshallerProduct()) {
-            if (product.getBrand().equals(brand)) {
+        for (Product product : products) {
+            if (product.getBrand().contains(brand)) {
+                list.add(product);
+            }
+        }
+        return list;
+    }
+    
+    public static ArrayList<Product> search(String name) {
+        if (name.isEmpty()) {
+            return products;
+        }
+        ArrayList<Product> list = new ArrayList<>();
+        for (Product product : products) {
+            if (product.getName().contains(name)) {
                 list.add(product);
             }
         }
@@ -40,20 +53,20 @@ public class ProductRepository {
     }
 
     public static boolean create(Product product) {
-        for (Product p : listPro) {
+        for (Product p : products) {
             if (p.getId().equals(product.getId())) {
                 return false;
             }
         }
-        listPro.add(product);
+        products.add(product);
         return true;
     }
 
     public static ArrayList<Product> read() {
-        return listPro;
+        return products;
     }
 
-    public static Product detail(String id) {
+    public static Product getById(String id) {
         for (Product pro : ProductRepository.read()) {
             if (id.equals(pro.getId())) {
                 return pro;
@@ -63,9 +76,9 @@ public class ProductRepository {
     }
 
     public static boolean update(Product pro) {
-        for (int i = 0; i < listPro.size(); i++) {
-            if (pro.getId().equals(listPro.get(i).getId())) {
-                listPro.set(i, pro);
+        for (int i = 0; i < products.size(); i++) {
+            if (pro.getId().equals(products.get(i).getId())) {
+                products.set(i, pro);
                 return true;
             }
         }
@@ -74,14 +87,14 @@ public class ProductRepository {
 
     public static boolean delete(String id) {
         int index = -1;
-        for (int i = 0; i < listPro.size(); i++) {
-            if (id.equals(listPro.get(i).getId())) {
+        for (int i = 0; i < products.size(); i++) {
+            if (id.equals(products.get(i).getId())) {
                 index = i;
                 break;
             }
         }
         if (index > -1) {
-            listPro.remove(index);
+            products.remove(index);
             return true;
         }
         return false;
@@ -89,22 +102,22 @@ public class ProductRepository {
 
     @Override
     public String toString() {
-        return "ProductRepo{" + "listPro=" + listPro + '}';
+        return "ProductRepo{" + "listPro=" + products + '}';
     }
 
     public ArrayList<Product> getlistPro() {
-        return listPro;
+        return products;
     }
 
     public void setlistPro(ArrayList<Product> listPro) {
-        ProductRepository.listPro = listPro;
+        ProductRepository.products = listPro;
     }
 
     public ProductRepository(ArrayList<Product> listPro) {
-        ProductRepository.listPro = listPro;
+        ProductRepository.products = listPro;
     }
 
     public ProductRepository() {
-        listPro = new ArrayList<>();
+        products = new ArrayList<>();
     }
 }
