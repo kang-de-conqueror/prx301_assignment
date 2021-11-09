@@ -40,6 +40,7 @@
                     </div>
                 </div>-->
                 <a class="nav-link" href="create_product.jsp" >Create new product</a>
+                <a class="btn btn-danger" href="logout" >Logout</a>
             </div>
             <form class="form-inline my-2 my-lg-0" method="GET" action="search">
                 <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search product" aria-label="Search product">
