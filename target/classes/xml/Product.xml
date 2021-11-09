@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Products xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/Product.xsd">
+    <Product>
+        <Id>P01</Id>
+        <Name>Lux A2.0</Name>
+        <Brand>Vinfast</Brand>
+        <Price>881695000</Price>
+        <Color>Đen</Color>
+        <Quantity>10</Quantity>
+        <ImgUrl>https://vinfastvn.com.vn/wp-content/uploads/2021/01/LUX-A-M2-Black-min.png</ImgUrl>
+    </Product>
+    <Product>
+        <Id>P02</Id>
+        <Name>Lux SA2.0</Name>
+        <Brand>Vinfast</Brand>
+        <Price>1126165000</Price>
+        <Color>Đen</Color>
+        <Quantity>10</Quantity>
+        <ImgUrl>https://i.xeoto.com.vn/auto/w600/vinfast/lux-sa20/vinfast-lux-sa20-2022.png</ImgUrl>
+    </Product>
+    <Product>
+        <Id>P03</Id>
+        <Name>Fadil</Name>
+        <Brand>Vinfast</Brand>
+        <Price>382500000</Price>
+        <Color>Đỏ</Color>
+        <Quantity>10</Quantity>
+        <ImgUrl>https://vinfasthoabinh.vn/wp-content/uploads/2019/08/11-1.png</ImgUrl>
+    </Product>
+    <Product>
+        <Id>P02</Id>
+        <Name>Mercedes</Name>
+        <Brand>Mercedes</Brand>
+        <Price>100</Price>
+        <Color>Đen</Color>
+        <Quantity>567</Quantity>
+        <ImgUrl>https://di-uploads-pod7.dealerinspire.com/mercedesbenzburlingtonca/uploads/2017/07/2017-Mercedes-Benz-AMG-S-63-.png</ImgUrl>
+    </Product>
+    <Product>
+        <Id>P03</Id>
+        <Name>Toyota</Name>
+        <Brand>Toyota</Brand>
+        <Price>160</Price>
+        <Color>Đen</Color>
+        <Quantity>5673</Quantity>
+        <ImgUrl>https://di-uploads-pod5.dealerinspire.com/beachautomotivegroup/uploads/2017/06/2017-Toyota-Camry.png</ImgUrl>
+    </Product>
+    <Product>
+        <Id>P04</Id>
+        <Name>Mitsubishi</Name>
+        <Brand>Mitsubishi</Brand>
+        <Price>50</Price>
+        <Color>Đen</Color>
+        <Quantity>567</Quantity>
+        <ImgUrl>https://images5.alphacoders.com/107/thumb-350-1070943.jpg</ImgUrl>
+    </Product>
+</Products>

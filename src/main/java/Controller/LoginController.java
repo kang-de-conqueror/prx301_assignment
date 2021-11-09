@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Repository.UserRepository;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +35,7 @@ public class LoginController extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
-            if (!"admin".equals(username) || !"admin".equals(password)) {
+            if (!UserRepository.checkLogin(username, password)) {
                 request.setAttribute("errorMessage", "Username or password not match");
             } else {
                 url = HOME;
