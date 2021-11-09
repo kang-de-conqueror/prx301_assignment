@@ -22,4 +22,14 @@ xsi:noNamespaceSchemaLocation="User.xsd">
     <Address>hcm</Address>
     <Role>1</Role>
 </User>
+<User>
+	<UserId>A002</UserId>
+	<Username>admin</Username>
+	<Password>admin</Password>
+	<Gender>male</Gender>
+	<Age>20</Age>
+	<NumberPhone>02923783152</NumberPhone>
+	<Address>hcm</Address>
+	<Role>0</Role>
+</User>
 </Users>

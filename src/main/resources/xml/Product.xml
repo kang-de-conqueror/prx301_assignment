@@ -34,7 +34,7 @@
         <Price>100</Price>
         <Color>Đen</Color>
         <Quantity>567</Quantity>
-        <ImgUrl>google.com/img2.jpg</ImgUrl>
+        <ImgUrl>https://di-uploads-pod7.dealerinspire.com/mercedesbenzburlingtonca/uploads/2017/07/2017-Mercedes-Benz-AMG-S-63-.png</ImgUrl>
     </Product>
     <Product>
         <Id>P03</Id>
@@ -43,7 +43,7 @@
         <Price>160</Price>
         <Color>Đen</Color>
         <Quantity>5673</Quantity>
-        <ImgUrl>google.com/img2.jpg</ImgUrl>
+        <ImgUrl>https://di-uploads-pod5.dealerinspire.com/beachautomotivegroup/uploads/2017/06/2017-Toyota-Camry.png</ImgUrl>
     </Product>
     <Product>
         <Id>P04</Id>
@@ -52,6 +52,6 @@
         <Price>50</Price>
         <Color>Đen</Color>
         <Quantity>567</Quantity>
-        <ImgUrl>google.com/img2.jpg</ImgUrl>
+        <ImgUrl>https://images5.alphacoders.com/107/thumb-350-1070943.jpg</ImgUrl>
     </Product>
 </Products>
